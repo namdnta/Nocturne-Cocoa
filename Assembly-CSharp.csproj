@@ -49,26 +49,7 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.9f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\_Project\Scripts\Core\Debug\DevHotkeys.cs" />
-    <Compile Include="Assets\_Project\Scripts\Core\Input\InputManager.cs" />
-    <Compile Include="Assets\_Project\Scripts\Core\Services\Services.cs" />
-    <Compile Include="Assets\_Project\Scripts\Core\Events\EventChannelSO.cs" />
-    <Compile Include="Assets\_Project\Scripts\Core\Events\VoidEventListener.cs" />
-    <Compile Include="Assets\_Project\Scripts\Core\Events\StringEventChannelSO.cs" />
-    <Compile Include="Assets\_Project\Scripts\Core\Bootstrap\BootstrapLoader.cs" />
-    <Compile Include="Assets\_Project\Scripts\Core\Events\VoidEventChannelSO.cs" />
-    <Compile Include="Assets\_Project\Scripts\SaveSystem\JsonSaveSerializer.cs" />
-    <Compile Include="Assets\_Project\Scripts\SaveSystem\SaveMigrator.cs" />
-    <Compile Include="Assets\_Project\Scripts\Core\Events\IntEventChannelSO.cs" />
-    <Compile Include="Assets\_Project\Scripts\Core\Events\BoolEventChannelSO.cs" />
-    <Compile Include="Assets\_Project\Scripts\SceneManagement\SceneFlowController.cs" />
-    <Compile Include="Assets\_Project\Scripts\SaveSystem\SaveManager.cs" />
-    <Compile Include="Assets\_Project\Scripts\Core\Session\GameSession.cs" />
-    <Compile Include="Assets\_Project\Scripts\SceneManagement\SceneNames.cs" />
     <Compile Include="Assets\Scenes\apala.cs" />
-    <Compile Include="Assets\_Project\Scripts\SaveSystem\ISaveSerializer.cs" />
-    <Compile Include="Assets\_Project\Scripts\SaveSystem\SaveData.cs" />
-    <Compile Include="Assets\_Project\Scripts\Core\Audio\AudioManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -1397,6 +1378,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="NocturneCocoa.Runtime.csproj" />
   </ItemGroup>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
   <ItemGroup>

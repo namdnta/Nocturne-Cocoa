@@ -92,8 +92,12 @@ namespace NocturneCocoa.SaveSystem
         /// <summary>Scene to return to when continuing. Empty means "use the default start scene".</summary>
         public string sceneName;
 
-        /// <summary>Top-down position in that scene. Filled in by the player controller in M2.</summary>
+        /// <summary>
+        /// Last top-down position of the player and the exploration scene it belongs to.
+        /// Written by PlayerController when saving or leaving a scene; used to put the player back.
+        /// </summary>
         public bool hasPosition;
+        public string positionSceneName;
         public Vector2 position;
     }
 

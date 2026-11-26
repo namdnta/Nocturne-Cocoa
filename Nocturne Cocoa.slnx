@@ -1,5 +1,5 @@
-﻿<Solution>
+<Solution>
   <Project Path="NocturneCocoa.Runtime.csproj" />
-  <Project Path="NocturneCocoa.Editor.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="NocturneCocoa.Editor.csproj" />
 </Solution>

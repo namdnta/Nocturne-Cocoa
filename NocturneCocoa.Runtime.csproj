@@ -50,10 +50,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Project\Scripts\Core\Debug\DevHotkeys.cs" />
+    <Compile Include="Assets\_Project\Scripts\Exploration\Player\PlayerMovement.cs" />
     <Compile Include="Assets\_Project\Scripts\Core\Input\InputManager.cs" />
     <Compile Include="Assets\_Project\Scripts\Core\Services\Services.cs" />
     <Compile Include="Assets\_Project\Scripts\Core\Events\EventChannelSO.cs" />
+    <Compile Include="Assets\_Project\Scripts\Exploration\Camera\CameraController.cs" />
+    <Compile Include="Assets\_Project\Scripts\Exploration\Interaction\PlayerInteractor.cs" />
     <Compile Include="Assets\_Project\Scripts\Core\Events\VoidEventListener.cs" />
+    <Compile Include="Assets\_Project\Scripts\Exploration\Player\PlayerController.cs" />
+    <Compile Include="Assets\_Project\Scripts\Exploration\Interaction\Interactible.cs" />
+    <Compile Include="Assets\_Project\Scripts\Exploration\Interaction\InteractionPromptIndicator.cs" />
     <Compile Include="Assets\_Project\Scripts\Core\Events\StringEventChannelSO.cs" />
     <Compile Include="Assets\_Project\Scripts\Core\Bootstrap\BootstrapLoader.cs" />
     <Compile Include="Assets\_Project\Scripts\Core\Events\VoidEventChannelSO.cs" />
@@ -64,8 +70,14 @@
     <Compile Include="Assets\_Project\Scripts\SceneManagement\SceneFlowController.cs" />
     <Compile Include="Assets\_Project\Scripts\SaveSystem\SaveManager.cs" />
     <Compile Include="Assets\_Project\Scripts\Core\Session\GameSession.cs" />
+    <Compile Include="Assets\_Project\Scripts\Exploration\Player\PlayerAnimator.cs" />
     <Compile Include="Assets\_Project\Scripts\SceneManagement\SceneNames.cs" />
+    <Compile Include="Assets\_Project\Scripts\Exploration\Interaction\UnityEventInteractable.cs" />
+    <Compile Include="Assets\_Project\Scripts\Exploration\Interaction\Interactable.cs" />
+    <Compile Include="Assets\_Project\Scripts\Exploration\Interaction\SceneTransitionInteractable.cs" />
+    <Compile Include="Assets\_Project\Scripts\Exploration\Interaction\SceneTransitionTrigger.cs" />
     <Compile Include="Assets\_Project\Scripts\SaveSystem\ISaveSerializer.cs" />
+    <Compile Include="Assets\_Project\Scripts\Exploration\Spawning\PlayerSpawnPoint.cs" />
     <Compile Include="Assets\_Project\Scripts\SaveSystem\SaveData.cs" />
     <Compile Include="Assets\_Project\Scripts\Core\Audio\AudioManager.cs" />
   </ItemGroup>

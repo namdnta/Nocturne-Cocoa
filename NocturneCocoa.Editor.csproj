@@ -50,6 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Project\Scripts\Editor\NocturneProjectSetup.cs" />
+    <Compile Include="Assets\_Project\Scripts\Editor\M2TestRoomBuilder.cs" />
+    <Compile Include="Assets\_Project\Scripts\Editor\PlaceholderSprites.cs" />
     <Compile Include="Assets\_Project\Scripts\Editor\SaveDebugMenu.cs" />
     <Compile Include="Assets\_Project\Scripts\Editor\BootstrapPlayModeStarter.cs" />
   </ItemGroup>
@@ -1183,6 +1185,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="NocturneCocoa.Runtime.csproj" />
   </ItemGroup>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
   <ItemGroup>

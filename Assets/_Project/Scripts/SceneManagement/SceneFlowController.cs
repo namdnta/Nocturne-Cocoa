@@ -37,6 +37,12 @@ namespace NocturneCocoa.SceneManagement
 
         public bool IsLoading { get; private set; }
 
+        /// <summary>
+        /// Which entry point (PlayerSpawnPoint ID) the current scene was entered through, e.g. "FromKitchen".
+        /// Empty when the scene was loaded without one (new game, continue, dev hotkeys).
+        /// </summary>
+        public string CurrentEntryPointId { get; private set; }
+
         public string CurrentSceneName
         {
             get { return SceneManager.GetActiveScene().name; }
@@ -45,7 +51,9 @@ namespace NocturneCocoa.SceneManagement
         /// <summary>
         /// Starts loading a scene. Returns false (and logs why) if the request was rejected.
         /// </summary>
-        public bool LoadScene(string sceneName)
+        /// <param name="sceneName">Scene to load (use SceneNames).</param>
+        /// <param name="entryPointId">Optional PlayerSpawnPoint ID to place the player at in the new scene.</param>
+        public bool LoadScene(string sceneName, string entryPointId = null)
         {
             if (IsLoading)
             {
@@ -67,6 +75,7 @@ namespace NocturneCocoa.SceneManagement
                 return false;
             }
 
+            CurrentEntryPointId = entryPointId ?? string.Empty;
             StartCoroutine(LoadSceneRoutine(sceneName));
             return true;
         }
