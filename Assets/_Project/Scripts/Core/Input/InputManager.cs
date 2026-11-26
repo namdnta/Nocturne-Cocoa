@@ -35,6 +35,7 @@ namespace NocturneCocoa.Core
         [SerializeField] private string interactActionName = "Interact";
         [SerializeField] private string pauseActionName = "Pause";
         [SerializeField] private string cancelActionName = "Cancel";
+        [SerializeField] private string submitActionName = "Submit";
 
         /// <summary>Movement vector changed (zero when released or when gameplay input is off).</summary>
         public event Action<Vector2> MoveChanged;
@@ -43,6 +44,9 @@ namespace NocturneCocoa.Core
 
         /// <summary>UI "back" (Esc / B button) while in UI mode, e.g. to close a menu.</summary>
         public event Action CancelPressed;
+
+        /// <summary>UI "confirm" (Enter / Space / E / A button), e.g. to advance dialogue.</summary>
+        public event Action SubmitPressed;
         public event Action<InputMode> ModeChanged;
 
         private InputActionMap gameplayMap;
@@ -51,6 +55,7 @@ namespace NocturneCocoa.Core
         private InputAction interactAction;
         private InputAction pauseAction;
         private InputAction cancelAction;
+        private InputAction submitAction;
 
         public Vector2 Move { get; private set; }
         public InputMode Mode { get; private set; }
@@ -75,6 +80,7 @@ namespace NocturneCocoa.Core
             interactAction = FindAction(gameplayMap, interactActionName);
             pauseAction = FindAction(gameplayMap, pauseActionName);
             cancelAction = FindAction(uiMap, cancelActionName);
+            submitAction = FindAction(uiMap, submitActionName);
 
             if (moveAction != null)
             {
@@ -85,6 +91,7 @@ namespace NocturneCocoa.Core
             if (interactAction != null) interactAction.performed += HandleInteract;
             if (pauseAction != null) pauseAction.performed += HandlePause;
             if (cancelAction != null) cancelAction.performed += HandleCancel;
+            if (submitAction != null) submitAction.performed += HandleSubmit;
 
             SetMode(InputMode.Gameplay);
         }
@@ -100,6 +107,7 @@ namespace NocturneCocoa.Core
             if (interactAction != null) interactAction.performed -= HandleInteract;
             if (pauseAction != null) pauseAction.performed -= HandlePause;
             if (cancelAction != null) cancelAction.performed -= HandleCancel;
+            if (submitAction != null) submitAction.performed -= HandleSubmit;
         }
 
         public void SetMode(InputMode mode)
@@ -156,6 +164,14 @@ namespace NocturneCocoa.Core
             if (Mode == InputMode.UI && CancelPressed != null)
             {
                 CancelPressed.Invoke();
+            }
+        }
+
+        private void HandleSubmit(InputAction.CallbackContext context)
+        {
+            if (Mode == InputMode.UI && SubmitPressed != null)
+            {
+                SubmitPressed.Invoke();
             }
         }
 

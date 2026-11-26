@@ -26,8 +26,10 @@ namespace NocturneCocoa.SaveSystem
         public PlayerSaveData player = new PlayerSaveData();
         public ProgressSaveData progress = new ProgressSaveData();
 
+        /// <summary>Affection and "has met" per character (M3, RelationshipSystem).</summary>
+        public List<RelationshipSaveEntry> relationships = new List<RelationshipSaveEntry>();
+
         // PLACEHOLDER sections for later milestones. Add them when the system is designed:
-        // M3: relationships  (List<RelationshipEntry>)
         // M4: inventory      (List<ItemStackEntry>), discoveredRecipeIds (List<string>)
         // M6: currency, completed orders, upgrades
 
@@ -76,10 +78,10 @@ namespace NocturneCocoa.SaveSystem
                 return false;
             }
 
-            if (progress.storyFlags == null)
-            {
-                progress.storyFlags = new List<string>();
-            }
+            // Lists can be missing in saves from older builds; repair instead of rejecting.
+            if (progress.storyFlags == null) progress.storyFlags = new List<string>();
+            if (progress.completedDialogueIds == null) progress.completedDialogueIds = new List<string>();
+            if (relationships == null) relationships = new List<RelationshipSaveEntry>();
 
             error = null;
             return true;
@@ -111,5 +113,16 @@ namespace NocturneCocoa.SaveSystem
         /// Dialogue conditions in M3 will read these.
         /// </summary>
         public List<string> storyFlags = new List<string>();
+
+        /// <summary>IDs of dialogues finished at least once (for DialogueCompleted conditions).</summary>
+        public List<string> completedDialogueIds = new List<string>();
+    }
+
+    [Serializable]
+    public class RelationshipSaveEntry
+    {
+        public string characterId;
+        public int points;
+        public bool met;
     }
 }

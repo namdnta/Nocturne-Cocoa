@@ -1,3 +1,5 @@
+using NocturneCocoa.Characters;
+using NocturneCocoa.Dialogue;
 using NocturneCocoa.SaveSystem;
 using NocturneCocoa.SceneManagement;
 using UnityEngine;
@@ -28,6 +30,10 @@ namespace NocturneCocoa.Core
         [SerializeField] private InputManager inputManager;
         [SerializeField] private AudioManager audioManager;
         [SerializeField] private GameSession gameSession;
+
+        [Header("M3 systems (optional until M3 setup has run)")]
+        [SerializeField] private RelationshipSystem relationshipSystem;
+        [SerializeField] private DialogueManager dialogueManager;
 
         [Header("Startup")]
         [SerializeField] private string firstScene = SceneNames.CafeExploration;
@@ -73,6 +79,18 @@ namespace NocturneCocoa.Core
             Services.Register(audioManager);
             Services.Register(gameSession);
 
+            if (relationshipSystem != null)
+            {
+                relationshipSystem.Initialize(gameSession);
+                Services.Register(relationshipSystem);
+            }
+
+            if (dialogueManager != null)
+            {
+                dialogueManager.Initialize(gameSession, relationshipSystem, inputManager, sceneFlow);
+                Services.Register(dialogueManager);
+            }
+
             Debug.Log("[Bootstrap] Nocturne Cocoa systems initialized.");
         }
 
@@ -97,6 +115,8 @@ namespace NocturneCocoa.Core
             if (inputManager == null) inputManager = GetComponentInChildren<InputManager>(true);
             if (audioManager == null) audioManager = GetComponentInChildren<AudioManager>(true);
             if (gameSession == null) gameSession = GetComponentInChildren<GameSession>(true);
+            if (relationshipSystem == null) relationshipSystem = GetComponentInChildren<RelationshipSystem>(true);
+            if (dialogueManager == null) dialogueManager = GetComponentInChildren<DialogueManager>(true);
 
             bool ok = true;
             ok &= Require(sceneFlow, "SceneFlowController");
@@ -104,6 +124,12 @@ namespace NocturneCocoa.Core
             ok &= Require(inputManager, "InputManager");
             ok &= Require(audioManager, "AudioManager");
             ok &= Require(gameSession, "GameSession");
+
+            if (relationshipSystem == null || dialogueManager == null)
+            {
+                Debug.LogWarning("[Bootstrap] Dialogue/Relationship systems not found; NPCs can't talk. Run Nocturne Cocoa > Setup > Build M3 Dialogue & NPCs.", this);
+            }
+
             return ok;
         }
 

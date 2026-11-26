@@ -169,6 +169,21 @@ namespace NocturneCocoa.Core
             }
         }
 
+        // ---------------------------------------------------------------- Dialogue history
+
+        public bool HasCompletedDialogue(string dialogueId)
+        {
+            return HasActiveSession && Data.progress.completedDialogueIds.Contains(dialogueId);
+        }
+
+        public void MarkDialogueCompleted(string dialogueId)
+        {
+            if (HasActiveSession && !string.IsNullOrEmpty(dialogueId) && !Data.progress.completedDialogueIds.Contains(dialogueId))
+            {
+                Data.progress.completedDialogueIds.Add(dialogueId);
+            }
+        }
+
         // ---------------------------------------------------------------- Internals
 
         private void HandleSceneLoaded(string sceneName)
@@ -189,10 +204,12 @@ namespace NocturneCocoa.Core
         private void CaptureCurrentScene()
         {
             string current = sceneFlow.CurrentSceneName;
-            if (current != SceneNames.Bootstrap)
+
+            // Dialogue_Scene is only a temporary stage (DialogueManager returns to the previous scene),
+            // so never resume into it; keep the scene the player came from.
+            if (current != SceneNames.Bootstrap && current != SceneNames.Dialogue)
             {
-                // DESIGN NOTE: this saves the exact scene (including Cooking/Dialogue). If you'd rather
-                // always resume in the café, only store SceneNames.CafeExploration here.
+                // DESIGN NOTE: Cooking_Scene is still saved as a resume scene. Revisit in M4.
                 Data.player.sceneName = current;
             }
         }

@@ -140,7 +140,7 @@ namespace NocturneCocoa.EditorTools
             return bounds;
         }
 
-        private static void CreateGlobalLight(Transform parent)
+        internal static void CreateGlobalLight(Transform parent)
         {
             // Looked up by name so the editor assembly doesn't need a URP reference.
             System.Type lightType = System.Type.GetType("UnityEngine.Rendering.Universal.Light2D, Unity.RenderPipelines.Universal.Runtime");
@@ -303,7 +303,7 @@ namespace NocturneCocoa.EditorTools
 
         // ---------------------------------------------------------------- Helpers
 
-        private static SpriteRenderer CreateSprite(string objectName, Transform parent, Sprite sprite, Color color, Vector2 position, Vector2 scale)
+        internal static SpriteRenderer CreateSprite(string objectName, Transform parent, Sprite sprite, Color color, Vector2 position, Vector2 scale)
         {
             GameObject go = new GameObject(objectName);
             go.transform.SetParent(parent, false);
@@ -330,7 +330,7 @@ namespace NocturneCocoa.EditorTools
             so.ApplyModifiedPropertiesWithoutUndo();
         }
 
-        private static GameObject FindRoot(Scene scene, string objectName)
+        internal static GameObject FindRoot(Scene scene, string objectName)
         {
             foreach (GameObject root in scene.GetRootGameObjects())
             {

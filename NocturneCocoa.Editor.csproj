@@ -52,6 +52,7 @@
     <Compile Include="Assets\_Project\Scripts\Editor\NocturneProjectSetup.cs" />
     <Compile Include="Assets\_Project\Scripts\Editor\M2TestRoomBuilder.cs" />
     <Compile Include="Assets\_Project\Scripts\Editor\PlaceholderSprites.cs" />
+    <Compile Include="Assets\_Project\Scripts\Editor\M3DialogueBuilder.cs" />
     <Compile Include="Assets\_Project\Scripts\Editor\SaveDebugMenu.cs" />
     <Compile Include="Assets\_Project\Scripts\Editor\BootstrapPlayModeStarter.cs" />
   </ItemGroup>
@@ -1167,12 +1168,20 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\6000.3.9f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Xml.XPath.XDocument.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+    <Reference Include="Unity.InputSystem">
+      <HintPath>Library\ScriptAssemblies\Unity.InputSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.TestRunner">

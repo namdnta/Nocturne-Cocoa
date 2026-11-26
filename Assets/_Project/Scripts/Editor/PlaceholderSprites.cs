@@ -37,6 +37,19 @@ namespace NocturneCocoa.EditorTools
             get { return GetOrCreate("Placeholder_Prompt", 9, 9, SpriteAlignment.Center, PromptPixel); }
         }
 
+        /// <summary>32x32 face for the dialogue box. Colour is baked in so each character looks different.</summary>
+        public static Sprite Portrait(string key, Color skin, bool happy)
+        {
+            string fileName = $"Placeholder_Portrait_{key}_{(happy ? "happy" : "neutral")}";
+            return GetOrCreate(fileName, 32, 32, SpriteAlignment.Center, (x, y, w, h) => PortraitPixel(x, y, skin, happy));
+        }
+
+        /// <summary>16x32 full-body side-view figure facing right, bottom pivot, for the dialogue stage.</summary>
+        public static Sprite SideView(string key, Color body)
+        {
+            return GetOrCreate($"Placeholder_SideView_{key}", 16, 32, SpriteAlignment.BottomCenter, (x, y, w, h) => SideViewPixel(x, y, body));
+        }
+
         private delegate Color PixelFunction(int x, int y, int width, int height);
 
         private static Sprite GetOrCreate(string fileName, int width, int height, SpriteAlignment pivot, PixelFunction pixel)
@@ -119,6 +132,48 @@ namespace NocturneCocoa.EditorTools
 
             bool eye = (x == 3 || x == w - 4) && (y == h - 6 || y == h - 7);
             return eye ? Dark : Color.white;
+        }
+
+        private static Color PortraitPixel(int x, int y, Color skin, bool happy)
+        {
+            float dx = x - 15.5f;
+            float dy = y - 15f;
+            float distance = Mathf.Sqrt(dx * dx + dy * dy);
+
+            if (distance > 13f) return Clear;
+            if (distance > 12f) return Dark;
+
+            bool eye = (x == 11 || x == 12 || x == 19 || x == 20) && (y == 17 || y == 18);
+            if (eye) return Dark;
+
+            bool mouth = happy
+                ? ((y == 10 && (x == 13 || x == 18)) || (y == 9 && x >= 14 && x <= 17))
+                : (y == 10 && x >= 13 && x <= 18);
+            if (mouth) return Dark;
+
+            bool blush = happy && y == 12 && (x == 9 || x == 10 || x == 21 || x == 22);
+            if (blush) return new Color(1f, 0.55f, 0.6f, 1f);
+
+            return skin;
+        }
+
+        private static Color SideViewPixel(int x, int y, Color body)
+        {
+            // Head: circle centred at (8, 25), radius 6. Body: rounded block below it.
+            float dx = x - 7.5f;
+            float dy = y - 25f;
+            float headDistance = Mathf.Sqrt(dx * dx + dy * dy);
+            bool inHead = headDistance <= 6f;
+            bool headEdge = inHead && headDistance > 5f;
+
+            bool inBody = x >= 3 && x <= 12 && y >= 0 && y <= 19;
+            bool bodyEdge = inBody && (x == 3 || x == 12 || y == 0 || (y == 19 && !inHead));
+
+            if (!inHead && !inBody) return Clear;
+            if (headEdge || bodyEdge) return Dark;
+
+            bool eye = x == 10 && (y == 26 || y == 25);
+            return eye ? Dark : body;
         }
 
         private static Color PromptPixel(int x, int y, int w, int h)

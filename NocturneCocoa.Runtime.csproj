@@ -50,35 +50,53 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Project\Scripts\Core\Debug\DevHotkeys.cs" />
+    <Compile Include="Assets\_Project\Scripts\Exploration\NPC\NpcController.cs" />
     <Compile Include="Assets\_Project\Scripts\Exploration\Player\PlayerMovement.cs" />
+    <Compile Include="Assets\_Project\Scripts\Exploration\Characters\ICharacterMotor.cs" />
+    <Compile Include="Assets\_Project\Scripts\Data\Dialogue\DialogueNode.cs" />
     <Compile Include="Assets\_Project\Scripts\Core\Input\InputManager.cs" />
     <Compile Include="Assets\_Project\Scripts\Core\Services\Services.cs" />
     <Compile Include="Assets\_Project\Scripts\Core\Events\EventChannelSO.cs" />
+    <Compile Include="Assets\_Project\Scripts\Exploration\Characters\CharacterAnimator.cs" />
     <Compile Include="Assets\_Project\Scripts\Exploration\Camera\CameraController.cs" />
     <Compile Include="Assets\_Project\Scripts\Exploration\Interaction\PlayerInteractor.cs" />
     <Compile Include="Assets\_Project\Scripts\Core\Events\VoidEventListener.cs" />
+    <Compile Include="Assets\_Project\Scripts\Dialogue\DialogueStage.cs" />
     <Compile Include="Assets\_Project\Scripts\Exploration\Player\PlayerController.cs" />
+    <Compile Include="Assets\_Project\Scripts\UI\Dialogue\DialogueChoiceButton.cs" />
+    <Compile Include="Assets\_Project\Scripts\Data\Dialogue\DialogueConditions.cs" />
     <Compile Include="Assets\_Project\Scripts\Exploration\Interaction\Interactible.cs" />
     <Compile Include="Assets\_Project\Scripts\Exploration\Interaction\InteractionPromptIndicator.cs" />
+    <Compile Include="Assets\_Project\Scripts\UI\Dialogue\DialogueUI.cs" />
+    <Compile Include="Assets\_Project\Scripts\Dialogue\DialogueConditionEvaluator.cs" />
+    <Compile Include="Assets\_Project\Scripts\Data\Characters\CharacterProfileSO.cs" />
     <Compile Include="Assets\_Project\Scripts\Core\Events\StringEventChannelSO.cs" />
+    <Compile Include="Assets\_Project\Scripts\Dialogue\DialogueLine.cs" />
     <Compile Include="Assets\_Project\Scripts\Core\Bootstrap\BootstrapLoader.cs" />
     <Compile Include="Assets\_Project\Scripts\Core\Events\VoidEventChannelSO.cs" />
     <Compile Include="Assets\_Project\Scripts\SaveSystem\JsonSaveSerializer.cs" />
     <Compile Include="Assets\_Project\Scripts\SaveSystem\SaveMigrator.cs" />
+    <Compile Include="Assets\_Project\Scripts\Data\Characters\CharacterDatabaseSO.cs" />
     <Compile Include="Assets\_Project\Scripts\Core\Events\IntEventChannelSO.cs" />
     <Compile Include="Assets\_Project\Scripts\Core\Events\BoolEventChannelSO.cs" />
     <Compile Include="Assets\_Project\Scripts\SceneManagement\SceneFlowController.cs" />
     <Compile Include="Assets\_Project\Scripts\SaveSystem\SaveManager.cs" />
+    <Compile Include="Assets\_Project\Scripts\Data\Dialogue\DialogueSO.cs" />
     <Compile Include="Assets\_Project\Scripts\Core\Session\GameSession.cs" />
     <Compile Include="Assets\_Project\Scripts\Exploration\Player\PlayerAnimator.cs" />
+    <Compile Include="Assets\_Project\Scripts\Characters\RelationshipSystem.cs" />
+    <Compile Include="Assets\_Project\Scripts\Exploration\NPC\NpcMovement.cs" />
     <Compile Include="Assets\_Project\Scripts\SceneManagement\SceneNames.cs" />
     <Compile Include="Assets\_Project\Scripts\Exploration\Interaction\UnityEventInteractable.cs" />
     <Compile Include="Assets\_Project\Scripts\Exploration\Interaction\Interactable.cs" />
     <Compile Include="Assets\_Project\Scripts\Exploration\Interaction\SceneTransitionInteractable.cs" />
     <Compile Include="Assets\_Project\Scripts\Exploration\Interaction\SceneTransitionTrigger.cs" />
+    <Compile Include="Assets\_Project\Scripts\Data\Dialogue\DialogueDatabaseSO.cs" />
     <Compile Include="Assets\_Project\Scripts\SaveSystem\ISaveSerializer.cs" />
     <Compile Include="Assets\_Project\Scripts\Exploration\Spawning\PlayerSpawnPoint.cs" />
+    <Compile Include="Assets\_Project\Scripts\Dialogue\DialogueManager.cs" />
     <Compile Include="Assets\_Project\Scripts\SaveSystem\SaveData.cs" />
+    <Compile Include="Assets\_Project\Scripts\UI\Dialogue\TypewriterEffect.cs" />
     <Compile Include="Assets\_Project\Scripts\Core\Audio\AudioManager.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1173,12 +1191,16 @@
       <HintPath>Library\ScriptAssemblies\Unity.InputSystem.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>

@@ -8,7 +8,7 @@ namespace NocturneCocoa.Exploration
     /// </summary>
     [RequireComponent(typeof(Rigidbody2D))]
     [DisallowMultipleComponent]
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerMovement : MonoBehaviour, ICharacterMotor
     {
         public enum DirectionMode
         {

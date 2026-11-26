@@ -13,7 +13,7 @@ namespace NocturneCocoa.Exploration
     public abstract class Interactable : MonoBehaviour
     {
         [Tooltip("Short verb shown by the prompt UI, e.g. \"Cook\", \"Talk\", \"Open\".")]
-        [SerializeField] private string promptText = "Interact";
+        [SerializeField] protected string promptText = "Interact";
 
         [Tooltip("When several interactables are in range, the highest priority wins, then the closest.")]
         [SerializeField] private int priority;
