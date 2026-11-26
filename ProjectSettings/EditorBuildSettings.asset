@@ -8,6 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Project/Scenes/Bootstrap.unity
     guid: e21aee220e8e28b4893c570c1b602305
+  - enabled: 1
+    path: Assets/_Project/Scenes/Cafe_Exploration.unity
+    guid: 063f481c59934ff42bb68c8a2a12220f
+  - enabled: 1
+    path: Assets/_Project/Scenes/Dialogue_Scene.unity
+    guid: 116eec0e6006b4146a2f2cd2c97d2687
+  - enabled: 1
+    path: Assets/_Project/Scenes/Cooking_Scene.unity
+    guid: 8009e43c277e5c14081a8d0f24442617
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

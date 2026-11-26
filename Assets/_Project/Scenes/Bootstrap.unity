@@ -128,6 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 126163490}
+  - component: {fileID: 126163491}
   m_Layer: 0
   m_Name: GameSystems
   m_TagString: Untagged
@@ -150,7 +151,79 @@ Transform:
   m_Children:
   - {fileID: 1111474946}
   - {fileID: 1885287777}
+  - {fileID: 659563696}
+  - {fileID: 1990696741}
+  - {fileID: 2077351977}
+  - {fileID: 2113728993}
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &126163491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126163489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dd48d1ef4940ed4f96d09ebe5a363ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: NocturneCocoa.Runtime::NocturneCocoa.Core.BootstrapLoader
+  sceneFlow: {fileID: 1885287778}
+  saveManager: {fileID: 659563695}
+  inputManager: {fileID: 1990696740}
+  audioManager: {fileID: 2077351976}
+  gameSession: {fileID: 1111474947}
+  firstScene: Cafe_Exploration
+  continueFromAutoSave: 0
+--- !u!1 &659563694
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 659563696}
+  - component: {fileID: 659563695}
+  m_Layer: 0
+  m_Name: SaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &659563695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 659563694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 127c441e4777d944fbcf211bb3fa1d11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: NocturneCocoa.Runtime::NocturneCocoa.SaveSystem.SaveManager
+  saveFolderName: Saves
+  manualSlotCount: 3
+  prettyPrintJson: 1
+  gameSavedChannel: {fileID: 0}
+  gameLoadedChannel: {fileID: 0}
+--- !u!4 &659563696
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 659563694}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 126163490}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1111474945
 GameObject:
@@ -161,6 +234,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1111474946}
+  - component: {fileID: 1111474947}
   m_Layer: 0
   m_Name: GameSession
   m_TagString: Untagged
@@ -183,6 +257,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 126163490}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1111474947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111474945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70419682feaccdd40908ab1811d97ebd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: NocturneCocoa.Runtime::NocturneCocoa.Core.GameSession
+  autoSaveOnSceneChange: 1
+  sessionStartedChannel: {fileID: 0}
 --- !u!1 &1885287776
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,6 +280,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1885287777}
+  - component: {fileID: 1885287778}
   m_Layer: 0
   m_Name: SceneFlowController
   m_TagString: Untagged
@@ -214,6 +303,165 @@ Transform:
   m_Children: []
   m_Father: {fileID: 126163490}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1885287778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1885287776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c38011305a99494bb39e1433fb89788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: NocturneCocoa.Runtime::NocturneCocoa.SceneManagement.SceneFlowController
+  sceneLoadStartedChannel: {fileID: 0}
+  sceneLoadedChannel: {fileID: 0}
+  minimumLoadDuration: 0
+--- !u!1 &1990696739
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1990696741}
+  - component: {fileID: 1990696740}
+  m_Layer: 0
+  m_Name: InputManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1990696740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990696739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fa37eaccd59e5f48abbb2b24b4b996c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: NocturneCocoa.Runtime::NocturneCocoa.Core.InputManager
+  actionsAsset: {fileID: 0}
+  gameplayMapName: Player
+  uiMapName: UI
+  moveActionName: Move
+  interactActionName: Interact
+  pauseActionName: Pause
+  cancelActionName: Cancel
+--- !u!4 &1990696741
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990696739}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 126163490}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2077351975
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2077351977}
+  - component: {fileID: 2077351976}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2077351976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077351975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2113bcae857702d4c86506b3179128c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: NocturneCocoa.Runtime::NocturneCocoa.Core.AudioManager
+  defaultMasterVolume: 1
+  defaultMusicVolume: 0.7
+  defaultSfxVolume: 1
+  sfxSourceCount: 8
+--- !u!4 &2077351977
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077351975}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 126163490}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2113728992
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2113728993}
+  - component: {fileID: 2113728994}
+  m_Layer: 0
+  m_Name: DevHotkeys
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2113728993
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113728992}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 126163490}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2113728994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113728992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cadd167f341eb9048a9173c698e3cacc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: NocturneCocoa.Runtime::NocturneCocoa.Core.DevHotkeys
+  logInputEvents: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
